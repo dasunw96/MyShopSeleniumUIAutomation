@@ -37,11 +37,11 @@ public class LoginPage extends BaseClass {
 
     }
 
-    public AddressPage loginViaCheckout(String uname, String passwd){
+    public MyAdressesPage loginViaCheckout(String uname, String passwd){
         Action.type(email,uname);
         Action.type(password,passwd);
         Action.click(getDriver(),signInBtn);
-        return new AddressPage();
+        return new MyAdressesPage();
 
     }
 

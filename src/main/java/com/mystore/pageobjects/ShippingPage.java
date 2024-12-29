@@ -6,19 +6,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MyAdressesPage extends BaseClass {
+public class ShippingPage extends BaseClass {
 
-    com.mystore.actiondriver.Action Action = new Action();
+    Action Action = new Action();
 
-    @FindBy(xpath = "//span[text()='Proceed to checkout']")
+    @FindBy(id = "cgv")
+    private WebElement terms;
+
+    @FindBy(xpath = "//button/span[contains(text(),'Proceed to checkout')]")
     private WebElement checkoutBtn;
 
-    public MyAdressesPage(){
+    public ShippingPage(){
         PageFactory.initElements(getDriver(),this);
     }
 
-    public ShippingPage clickCheckOut(){
+    public PaymentPage Checkout(){
+        Action.click(getDriver(),terms);
         Action.click(getDriver(),checkoutBtn);
-        return new ShippingPage();
+        return new PaymentPage();
     }
 }

@@ -37,7 +37,7 @@ public class AddressPage extends BaseClass {
     private WebElement mobilePhone;
 
     @FindBy(id = "alias")
-    private WebElement addressTitle;
+    private WebElement AddressTitle;
 
     @FindBy(id = "submitAddress")
     private WebElement saveAddress;
@@ -55,6 +55,16 @@ public class AddressPage extends BaseClass {
             String addressTitle
     ){
         Action.type(firstName,fName);
+        Action.type(lastName,lName);
+        Action.type(Address,address);
+        Action.type(City,city);
+        Action.selectByVisibleText(state,State);
+        Action.type(postCode,postal);
+        Action.selectByVisibleText(country,Country);
+        Action.type(homePhone,home);
+        Action.type(mobilePhone,mobile);
+        Action.type(AddressTitle,addressTitle);
+        Action.click(getDriver(),saveAddress);
         return new MyAdressesPage();
     }
 }
