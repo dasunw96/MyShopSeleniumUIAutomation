@@ -37,8 +37,13 @@ public class IndexPage extends BaseClass {
     }
 
     public String getTitle(){
-        String Title = getDriver().getTitle();
-        return Title;
+        return getDriver().getTitle();
+    }
+
+    public SearchResultPage searchProduct(String productName){
+        Action.type(searchBox,productName);
+        Action.click(getDriver(),searchBtn);
+        return new SearchResultPage();
     }
 
 
