@@ -2,13 +2,22 @@ package com.mystore.pageobjects;
 
 import com.mystore.actiondriver.Action;
 import com.mystore.base.BaseClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class IndexPage extends BaseClass {
+import java.time.Duration;
+
+public class IndexPage extends BaseClass{
 
     Action Action = new Action();
+
+    public IndexPage(){
+        PageFactory.initElements(getDriver(),this);
+    }
 
     @FindBy (xpath = "//a[@class='login']")
     private WebElement signIn;
@@ -22,9 +31,7 @@ public class IndexPage extends BaseClass {
     @FindBy (name = "submit_search")
     private WebElement searchBtn;
 
-    public IndexPage(){
-        PageFactory.initElements(getDriver(),this);
-    }
+
 
     public LoginPage clickSignIn(){
         Action.fluentWait(getDriver(),signIn,10);

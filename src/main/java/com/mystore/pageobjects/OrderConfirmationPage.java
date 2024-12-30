@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class OrderConfirmationPage extends BaseClass {
 
-    Action Action = new Action();
-
     @FindBy(xpath = "//p[contains(text(),'Your order on My Shop is complete.')]")
     private WebElement confirmMsg;
 

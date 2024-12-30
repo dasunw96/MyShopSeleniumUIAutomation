@@ -20,10 +20,10 @@ public class HomePage extends BaseClass {
     @FindBy(xpath = "//span[text()='Add my first address']")
     private WebElement addFirstAddress;
 
-    @FindBy(xpath = "//span[text()='Order history and details']']")
+    @FindBy(xpath = "//span[text()='Order history and details']")
     private WebElement orderHistory;
 
-    @FindBy(xpath = "//span[text()='My credit slips']']")
+    @FindBy(xpath = "//span[text()='My credit slips']")
     private WebElement creditSlips;
 
     public HomePage(){
@@ -32,6 +32,10 @@ public class HomePage extends BaseClass {
 
     public boolean validateTitle(){
         return Action.isDisplayed(getDriver(),title);
+    }
+
+    public String getCurrentUrl(){
+        return getDriver().getCurrentUrl();
     }
 
     public boolean validateAccountCreationSuccessAlert(){
