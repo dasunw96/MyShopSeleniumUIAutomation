@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>5.3.0</version>
+            <version>4.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -37,9 +37,14 @@
             <version>4.1.2</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>5.1.2</version>
+            <version>4.0.9</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -66,6 +71,7 @@
         </dependency>
     </dependencies>
     <build>
+        <pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -98,5 +104,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        </pluginManagement>
     </build>
 </project>

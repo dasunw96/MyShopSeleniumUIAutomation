@@ -1,12 +1,17 @@
 package com.mystore.base;
 
+import com.mystore.utility.ExtentManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,8 +23,10 @@ public class BaseClass {
     public static Properties prop;
     public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
 
-    @BeforeTest
+    @BeforeSuite(groups = {"Sanity", "Smoke","Regression"})
     public void loadConfig() throws IOException {
+        ExtentManager.setExtent();
+        DOMConfigurator.configure("log4j.xml");
         try {
             prop = new Properties();
             System.out.println("super constructor invoked");
@@ -36,9 +43,8 @@ public class BaseClass {
         return driver.get();
     }
 
-    public void launchWeb(){
-
-        String browserName = prop.getProperty("browser");
+    @Parameters("browser")
+    public static void launchWeb(String browserName){
 
         if (browserName.equalsIgnoreCase("Chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -49,6 +55,9 @@ public class BaseClass {
         } else if (browserName.equalsIgnoreCase("IE")) {
             WebDriverManager.iedriver().setup();
             driver.set(new InternetExplorerDriver());
+        }else if (browserName.equalsIgnoreCase("Edge")) {
+            WebDriverManager.edgedriver().setup();
+            driver.set(new EdgeDriver());
         }
 
         //Maximize the screen
@@ -64,6 +73,11 @@ public class BaseClass {
         //Launching the URL
         getDriver().get(prop.getProperty("url"));
 
+    }
+
+    @AfterSuite(groups = { "Smoke", "Regression","Sanity" })
+    public void AfterSuite(){
+        ExtentManager.endReport();
     }
 
 }

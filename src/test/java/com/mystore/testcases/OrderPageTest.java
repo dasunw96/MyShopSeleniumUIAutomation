@@ -8,6 +8,7 @@ import com.mystore.pageobjects.SearchResultPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class OrderPageTest extends BaseClass {
@@ -17,17 +18,18 @@ public class OrderPageTest extends BaseClass {
     private AddToCartPage addToCartPage;
     private OrderPage orderPage;
 
-    @BeforeMethod
-    public void setup(){
+    @Parameters("browser")
+    @BeforeMethod(groups = {"Sanity", "Smoke","Regression"})
+    public void setup(String browser){
 
-        launchWeb();
+        launchWeb(browser);
     }
-    @AfterMethod
+    @AfterMethod(groups = {"Sanity", "Smoke","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test(groups = "Regression")
     public void verifyTotalPrice(){
 
         indexPage = new IndexPage();

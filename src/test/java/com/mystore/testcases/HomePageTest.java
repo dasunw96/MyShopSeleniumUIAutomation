@@ -7,6 +7,7 @@ import com.mystore.pageobjects.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseClass {
@@ -15,17 +16,18 @@ public class HomePageTest extends BaseClass {
     private LoginPage loginPage;
     private HomePage homePage;
 
-    @BeforeMethod
-    public void setup(){
+    @Parameters("browser")
+    @BeforeMethod(groups = {"Sanity", "Smoke","Regression"})
+    public void setup(String browser){
 
-        launchWeb();
+        launchWeb(browser);
     }
-    @AfterMethod
+    @AfterMethod(groups = {"Sanity", "Smoke","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test (groups = "Smoke")
     public void validateOrderHistoryVisible(){
 
         indexPage=new IndexPage();

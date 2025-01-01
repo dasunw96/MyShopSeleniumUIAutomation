@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CrossBrowser" parallel="tests">
+    <listeners>
+        <listener class-name="com.mystore.utility.ListenerClass"></listener>
+    </listeners>
+    <test name="Chrome">
+        <parameter name="browser" value="Chrome"></parameter>
+        <classes>
+            <class name="com.mystore.testcases.EndToEndTest1" />
+        </classes>
+    </test>
+    <test name="Edge">
+        <parameter name="browser" value="Edge"></parameter>
+        <classes>
+            <class name="com.mystore.testcases.EndToEndTest1" />
+        </classes>
+    </test><!-- Test -->
+</suite> <!-- Suite -->

@@ -38,6 +38,7 @@ public class AddToCartPage extends BaseClass {
         Action.selectByVisibleText(size,Size);
         Action.click(getDriver(),Color);
         Action.type(Quantity,quantity);
+        Action.fluentWait(getDriver(),addToCartPopup,10);
         Action.click(getDriver(),addToCartBtn);
         Action.fluentWait(getDriver(),addToCartPopup,10);
         return Action.isDisplayed(getDriver(),addToCartPopup);

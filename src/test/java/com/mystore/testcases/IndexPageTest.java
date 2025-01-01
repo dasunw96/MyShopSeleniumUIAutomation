@@ -2,11 +2,10 @@ package com.mystore.testcases;
 
 import com.mystore.base.BaseClass;
 import com.mystore.pageobjects.IndexPage;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -15,17 +14,18 @@ public class IndexPageTest extends BaseClass {
 
     private IndexPage indexPage;
 
-    @BeforeMethod
-    public void setup(){
+    @Parameters("browser")
+    @BeforeMethod(groups = {"Sanity", "Smoke","Regression"})
+    public void setup(String browser){
 
-        launchWeb();
+        launchWeb(browser);
     }
-    @AfterMethod
+    @AfterMethod(groups = {"Sanity", "Smoke","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test (groups = "Smoke")
     public void verifyLogo(){
 
         indexPage = new IndexPage();
@@ -33,7 +33,7 @@ public class IndexPageTest extends BaseClass {
         Assert.assertTrue(isPresentLogo);
     }
 
-    @Test
+    @Test (groups = "Smoke")
     public void verifyTitle(){
 
         String isPresentTitle = indexPage.getTitle();
