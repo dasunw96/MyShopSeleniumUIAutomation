@@ -99,8 +99,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <!--suppress UnresolvedMavenProperty, UnresolvedMavenProperty -->
-                        <suiteXmlFile>${xmlFiles}</suiteXmlFile>
+                        <suiteXmlFile>testng_all.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <appURL>${url}</appURL>

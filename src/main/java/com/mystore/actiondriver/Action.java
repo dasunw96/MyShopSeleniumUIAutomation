@@ -699,7 +699,7 @@ public class Action extends BaseClass implements ActionInterface {
         }
         @Override
         public void implicitWait(WebDriver driver, int timeOut) {
-            driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeOut));
         }
         @Override
         public void explicitWait(WebDriver driver, WebElement element, int timeOut ) {
@@ -708,7 +708,7 @@ public class Action extends BaseClass implements ActionInterface {
         }
         @Override
         public void pageLoadTimeOut(WebDriver driver, int timeOut) {
-            driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeOut));
         }
         @Override
         public String screenShot(WebDriver driver, String filename) {

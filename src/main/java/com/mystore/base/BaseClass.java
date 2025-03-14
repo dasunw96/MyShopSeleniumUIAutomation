@@ -18,10 +18,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class BaseClass {
     public static Properties prop;
-    public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+    public static ThreadLocal <RemoteWebDriver> driver = new ThreadLocal<>();
 
     @BeforeSuite(groups = {"Sanity", "Smoke","Regression"})
     public void loadConfig() throws IOException {
@@ -47,16 +48,12 @@ public class BaseClass {
     public static void launchWeb(String browserName){
 
         if (browserName.equalsIgnoreCase("Chrome")) {
-            WebDriverManager.chromedriver().setup();
             driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("FireFox")) {
-            WebDriverManager.firefoxdriver().setup();
             driver.set(new FirefoxDriver());
         } else if (browserName.equalsIgnoreCase("IE")) {
-            WebDriverManager.iedriver().setup();
             driver.set(new InternetExplorerDriver());
         }else if (browserName.equalsIgnoreCase("Edge")) {
-            WebDriverManager.edgedriver().setup();
             driver.set(new EdgeDriver());
         }
 
@@ -65,11 +62,9 @@ public class BaseClass {
         //Delete all the cookies
         getDriver().manage().deleteAllCookies();
         //Implicit TimeOuts
-        getDriver().manage().timeouts().implicitlyWait
-                (Integer.parseInt(prop.getProperty("implicitWait")), TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //PageLoad TimeOuts
-        getDriver().manage().timeouts().pageLoadTimeout
-                (Integer.parseInt(prop.getProperty("pageLoadTimeOut")),TimeUnit.SECONDS);
+        getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
         //Launching the URL
         getDriver().get(prop.getProperty("url"));
 
