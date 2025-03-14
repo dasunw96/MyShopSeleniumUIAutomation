@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -48,6 +49,8 @@ public class BaseClass {
     public static void launchWeb(String browserName){
 
         if (browserName.equalsIgnoreCase("Chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--headless");
             driver.set(new ChromeDriver());
         } else if (browserName.equalsIgnoreCase("FireFox")) {
             driver.set(new FirefoxDriver());
