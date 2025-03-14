@@ -70,11 +70,14 @@ public class SignUpPage extends BaseClass {
         Action.type(lastName,lName);
         Action.type(Email,email);
         Action.type(password,psswd);
-        Action.fluentWait(getDriver(),Day,3);
-        Action.selectByVisibleText(day,Day);
-        Action.fluentWait(getDriver(),Month,3);
+       // Action.fluentWait(getDriver(),Day,3);
+        Action.click(getDriver(),Day);
+        Action.selectByValue(Day,day);
+        //Action.fluentWait(getDriver(),Month,3);
+        Action.click(getDriver(),Month);
         Action.selectByVisibleText(month, Month);
-        Action.fluentWait(getDriver(),Year,3);
+        //Action.fluentWait(getDriver(),Year,3);
+        Action.click(getDriver(),Year);
         Action.selectByVisibleText(year,Year);
 
     }

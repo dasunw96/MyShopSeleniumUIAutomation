@@ -13,7 +13,7 @@
         </groups>
         <classes>
             <class name="com.mystore.testcases.SignupPageTest" />
-            <class name="com.mystore.testcases.AddToCartPageTest" />
+           <class name="com.mystore.testcases.AddToCartPageTest" />
             <class name="com.mystore.testcases.HomePageTest" />
             <class name="com.mystore.testcases.OrderPageTest" />
             <class name="com.mystore.testcases.SearchResultPageTest" />
